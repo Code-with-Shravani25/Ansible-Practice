@@ -1,1 +1,18 @@
-
+# Create multiple users and set password using vars
+---
+- name: Create multiple users and set password using vars
+  hosts: all
+  become: yes
+  vars:
+    users:
+      - {name: dev1,password: "dev1"}
+      - {name: dev2,password: "dev2"}
+      - {name: dev3,password: "dev3"}
+  tasks:
+    - name: Create user
+      user:
+        name: "{{item.name}}"
+        password: "{{item.password | password_hash('sha512')}}"
+        shell: /bin/bash
+        state: present
+      loop: "{{users}}"
