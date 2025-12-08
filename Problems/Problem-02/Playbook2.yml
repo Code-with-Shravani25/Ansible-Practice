@@ -1,1 +1,13 @@
 #Gather and display system facts of all servers using gather facts to collect information like OS, IP,hostname.
+---
+- name: Gather and Display system facts
+  hosts: all
+  become: yes
+  gather_facts: yes
+  tasks:
+    - name: Display system facts
+      debug:
+        msg: 
+         - "IP: {{ansible_default_ipv4.address}}"
+         - "OS: {{ansible_distribution}}"
+         - "Hostname: {{ansible_hostname}}"
