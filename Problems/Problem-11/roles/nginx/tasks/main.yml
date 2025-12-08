@@ -1,0 +1,18 @@
+---
+# tasks file for nginx
+- name: Install nginx
+  apt: 
+    name: nginx
+    state: present
+    update_cache: yes
+- name: Start and Enable service
+  service:
+    name: nginx
+    state: started
+    enabled: yes
+- name: Copy files
+  copy:
+    src: files/index.html
+    dest: /var/www/html/index.html
+    mode: '0644'
+  notify: Restart Nginx
