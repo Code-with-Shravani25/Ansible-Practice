@@ -1,4 +1,4 @@
-# Install and start niginc service using roles and copy custom index.html file
+# Reboot servers and wait until they are up
 
 ---
 - name: Reboot servers and wait until they are back
