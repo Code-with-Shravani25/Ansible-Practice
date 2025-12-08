@@ -1,1 +1,17 @@
+#Create a user with specific password using vars
 
+---
+- name: Create a user and set up password using vars
+  hosts: all
+  become: true
+  vars:
+    username: devops
+    userpassword: "{{'Devops' | password_hash('sha512')}}"
+
+  tasks:
+    - name: Create user
+      user:
+        name: "{{username}}"
+        password: "{{userpassword}}"
+        shell: /bin/bash
+        state: present
