@@ -1,2 +1,11 @@
 # Problem Statement: Ping all hosts in your inventory to check connectivity of all hosts in your inventory by creating a playbook
 
+# Ansible Adhoc Command: ansible all -i inventory.ini -m ping
+
+---
+- name: Ping module
+  hosts: all
+  become: yes
+  tasks:
+    - name: Ping module
+      ping:
