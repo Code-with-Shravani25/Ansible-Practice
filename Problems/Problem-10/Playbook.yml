@@ -1,1 +1,24 @@
+# Conditionallt install a package based on OS
+---
+- name: Conditionallt install a package based on OS
+  hosts: all
+  become: true
+  tasks:
+    - name: Install nginx on Ubuntu/Debian server
+      apt:
+        name: nginx
+        state: present
+      when: ansible_facts['os_family'] == "Debian"
+    - name: Install APache httpd on RedHat/Centos server
+      yum:
+        name: httpd
+        state: present
+      notify: Start and Enable Service
+      when: ansible_facts['os_family'] == "RedHat"
 
+  handlers:
+    - name: Start and Enable Service
+      service:
+        name: httpd
+        state: started
+        enabled: yes
