@@ -1,1 +1,18 @@
+# Create multiple users
 
+---
+- name: Create multiple users
+  hosts: all
+  become: yes
+  vars:
+    users:
+      - user1
+      - user2
+      - user3
+  tasks:
+    - name: Create user
+      user:
+        name: "{{item}}"
+        shell: /bin/bash
+        state: present
+      loop: "{{users}}"
