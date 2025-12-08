@@ -1,1 +1,13 @@
-
+# Change file ownership and permissions
+---
+- name: Change file ownership and permissions
+  hosts: all
+  become: yes
+  tasks:
+    - name: Set ownership and permissions
+      file:
+        path: /home/ubuntu/temp.txt
+        owner: root
+        group: root
+        mode: '744'
+       # state: directory
