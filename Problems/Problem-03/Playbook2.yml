@@ -2,7 +2,7 @@
 
 # Create vault: ansible-vault create secrets.yml
 ---
-- name: Create a user and set up password using vars
+- name: Create a user and set up password using vault
   hosts: all
   become: true
   vars_files:
