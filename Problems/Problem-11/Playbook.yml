@@ -1,1 +1,7 @@
-
+# Install and start nginx service using roles and copy custom index.html file
+---
+- name: Deploy Nginx web server
+  hosts: web
+  become: yes
+  roles:
+    - nginx
