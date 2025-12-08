@@ -1,1 +1,11 @@
+# Install and start niginc service using roles and copy custom index.html file
 
+---
+- name: Reboot servers and wait until they are back
+  hosts: test
+  become: yes
+  tasks:
+    - name: Reboot servers
+      reboot:
+        reboot_timeout: 600
+        test_command: whoami
