@@ -1,1 +1,13 @@
+# Create user and set password
 
+---
+- name: Create a user and set up password 
+  hosts: all
+  become: true
+  tasks:
+    - name: Create user
+      user:
+        name: Devops5
+        password: "{{'Devops5' | password_hash('sha512')}}"
+        shell: /bin/bash
+        state: present
