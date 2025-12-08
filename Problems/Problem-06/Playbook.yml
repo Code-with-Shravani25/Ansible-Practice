@@ -1,1 +1,12 @@
+# Fetch a file from remote to Ansible Controller
 
+---
+- name: Fetch a file from remote hosts to controller
+  hosts: all
+  become: yes
+  tasks:
+    - name: Fetch file
+      fetch:
+        src: /home/ubuntu/temp.txt
+        dest: /home/ubuntu/Temp/temp.txt
+        flat: yes
