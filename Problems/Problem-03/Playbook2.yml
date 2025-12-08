@@ -1,1 +1,20 @@
+# Create a user and setup password but store the password in vault
 
+# Create vault: ansible-vault create secrets.yml
+---
+- name: Create a user and set up password using vars
+  hosts: all
+  become: true
+  vars_files:
+     - secrets.yml
+  tasks:
+    - name: Create user
+      user:
+        name: "{{username}}"
+        password: "{{userpassword | password_hash('sha512')}}"
+        shell: /bin/bash
+        state: present
+
+#secrets.yml
+#username: Devops123
+#userpassword: "Devops123"
