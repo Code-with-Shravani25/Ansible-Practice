@@ -1,1 +1,13 @@
-
+# Copy file from controller to all managed nodes
+---
+- name: Copy file from controller to all managed nodes
+  hosts: all
+  become: yes
+  tasks:
+    - name: Copy file
+      copy: 
+        src: /home/ubuntu/temp.txt
+        dest: /home/ubuntu/temp.txt
+        owner: root
+        group: root
+        mode: '0644'
