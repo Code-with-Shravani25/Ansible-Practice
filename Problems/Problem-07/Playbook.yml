@@ -10,4 +10,4 @@
         owner: root
         group: root
         mode: '744'
-       # state: directory
+       # state: directory #if you want to set it for directory then specify its for directory like this
