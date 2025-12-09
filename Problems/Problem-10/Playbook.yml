@@ -9,11 +9,12 @@
         name: nginx
         state: present
       when: ansible_facts['os_family'] == "Debian"
+      
     - name: Install APache httpd on RedHat/Centos server
       yum:
         name: httpd
         state: present
-      notify: Start and Enable Service
+      notify: Start and Enable Service  #Because apache needs to start and enabled after installation otherwise webpage will not be reached.
       when: ansible_facts['os_family'] == "RedHat"
 
   handlers:
