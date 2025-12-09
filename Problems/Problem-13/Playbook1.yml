@@ -1,0 +1,21 @@
+# Run a command only when a file exists and display output
+---
+- name: Run a command only when a file exists
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Check if file exists
+      stat:
+        path: /home/ubuntu/temp.txt
+      register: file_check
+
+    - name: Run a command if file exists
+      command: cat /home/ubuntu/temp.txt
+      register: cmd_output
+      when: file_check.stat.exists
+
+    - name: Show command output
+      debug:
+        var: cmd_output.stdout
+      when: file_check.stat.exists
