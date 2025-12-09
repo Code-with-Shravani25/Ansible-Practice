@@ -1,0 +1,12 @@
+# Run a command only when a file exists but without stat module
+---
+- name: Run a command only when a file exists but without stat module
+  hosts: all
+  become: yes
+  tasks:
+    - name: To check file exists
+      shell: "[ -f /home/ubuntu/temp.txt ] && cat /home/ubuntu/temp.txt"
+      register: file_check
+    - name: Display output
+      debug:
+        msg: "{{ file_check.stdout}}"
