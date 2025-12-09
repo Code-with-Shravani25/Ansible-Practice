@@ -1,1 +1,19 @@
-
+# Create a daily cron job to run a script
+---
+- name: Create a daily cron job to run a script
+  hosts: all
+  become: yes
+  vars:
+    script_path: /usr/local/bin/cleanup.sh
+  tasks:
+    - name: Ensure script is present on target
+      copy:
+        src: /tmp/cleanup.sh
+        dest: "{{script_path}}"
+        mode: '0755'
+    - name: Create a daily cron job at 3 AM
+      cron:
+        name: Daily Cleanup Job
+        minute: "0"
+        hour: "3"
+        job: "{{script_path}} >> /var/log/cleanup.log 2>&1"
