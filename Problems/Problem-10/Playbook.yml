@@ -10,7 +10,7 @@
         state: present
       when: ansible_facts['os_family'] == "Debian"
       
-    - name: Install APache httpd on RedHat/Centos server
+    - name: Install APache httpd on RedHat/Centos server  
       yum:
         name: httpd
         state: present
@@ -23,3 +23,10 @@
         name: httpd
         state: started
         enabled: yes
+
+
+
+# Note:
+# If using different OS from the ansible controller one then state that in your inventory file as:
+# For example if your ansible controller is on ubuntu then
+# private_ip ansible_user=ec2-user
