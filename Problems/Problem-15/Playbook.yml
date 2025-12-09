@@ -1,1 +1,18 @@
+# Stop a service if disk usage > 80%
 
+---
+- name: Stop a service if disk usage > 80%
+  hosts: web
+  become: yes
+  tasks:
+    - name: Check disk usage
+      shell: df -h / | awk 'NR==2 {print $5}' | sed 's/%//'
+      register: disk_usage
+    - name: Display current disk usage
+      debug:
+        msg: "Current disk usage is {{disk_usage.stdout}}%"
+    - name: Stop Nginx if disk usage > 80%
+      service:
+        name: nginx
+        state: stopped
+      when: disk_usage.stdout | int > 80
