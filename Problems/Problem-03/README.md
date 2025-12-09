@@ -14,3 +14,13 @@ Instead, Linux stores a **hashed version** of the password, and **SHA-512** is o
 ### ✔️ Check Existing Users
 ```bash
 cat /etc/passwd
+```
+
+### ✔️ Switch to a User
+```bash
+su - <username>
+```
+
+### ✔️ to set password of user
+```bash
+sudo passwd <username>
