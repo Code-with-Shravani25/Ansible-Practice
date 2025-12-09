@@ -7,5 +7,7 @@
   tasks:
     - name: Reboot servers
       reboot:
-        reboot_timeout: 600
-        test_command: whoami
+        reboot_timeout: 600 # maximum time to wait for server to come back in seconds
+        test_command: whoami #This commands output is not displayed, because it is used internally to display use command: whoami
+
+#check using 'date' for current time of server and 'uptime -s' for last reboot time
