@@ -9,4 +9,4 @@
       fetch:
         src: /home/ubuntu/temp.txt
         dest: /home/ubuntu/Temp/temp.txt
-        flat: yes
+        flat: yes  # prevents Ansible from creating nested host directory(like ip/home/ubuntu/Temp/temp/txt for all nodes), it directly saves files to dest.
