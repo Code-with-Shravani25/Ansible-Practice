@@ -21,6 +21,6 @@ cat /etc/passwd
 su - <username>
 ```
 
-### ✔️ to set password of user
+### ✔️ To set password of user
 ```bash
 sudo passwd <username>
