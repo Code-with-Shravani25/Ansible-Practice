@@ -53,20 +53,44 @@ Even if the command succeeds or fails by default, you can control when Ansible s
 
 ---
 
-## 🔹 4. `block`
+---
 
-### **Definition**
-`block` is used to group multiple tasks together for structured error handling.  
-It allows you to handle failures collectively and use `rescue` and `always` blocks.  
-Think of it as a `try {}` block in programming.
+## 🔹 Block, Rescue, and Always in Ansible
+
+### **block**
+**Definition:**  
+Groups multiple tasks together for structured error handling.  
+Similar to a `try{}` block in programming.
+
+---
+
+### **rescue**
+**Definition:**  
+Executes tasks **only if any task in the block fails**.  
+Acts like a `catch{}` block in programming.
+
+---
+
+### **always**
+**Definition:**  
+Executes tasks **regardless of success or failure** of the block.  
+Equivalent to a `finally{}` block in programming.
+
+---
 
 ### **Example**
 ```yaml
 - block:
-    - name: Task 1
-      shell: echo "Running Task 1"
-    - name: Task 2
+    - name: Task that may fail
       shell: /bin/false
+  rescue:
+    - name: Rescue tasks
+      debug:
+        msg: "Rescue executed."
+  always:
+    - name: Always run this
+      debug:
+        msg: "Cleanup tasks always run."
 ```
 
 
