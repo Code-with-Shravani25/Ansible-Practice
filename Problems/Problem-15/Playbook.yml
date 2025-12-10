@@ -6,7 +6,7 @@
   become: yes
   tasks:
     - name: Check disk usage
-      shell: df -h / | awk 'NR==2 {print $5}' | sed 's/%//'
+      shell: df -h / | awk 'NR==2 {print $5}' | sed 's/%//' 
       register: disk_usage
     - name: Display current disk usage
       debug:
@@ -16,3 +16,8 @@
         name: nginx
         state: stopped
       when: disk_usage.stdout | int > 80
+
+
+ # df -h / --> show disk usage of root (/)
+ # awk 'NR==2 {print $5}'  --> awk is a text processing tool, NR==2 no of record(line 2), {print $5} Extracts "Use%" column 
+ # sed 's/%//' --> removes % sign leaving empty number.
