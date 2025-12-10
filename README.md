@@ -81,3 +81,29 @@ Installs Nginx on Debian-based systems or Apache HTTPD on RedHat-based systems u
 Deploys an Nginx web server using an Ansible role that installs Nginx, configures the service, copies a webpage, and restarts Nginx when needed.
 
 ---
+
+## **Problem-12: Daily Cron Job**
+**Playbook Description:**  
+An Ansible playbook that ensures a script exists on target hosts and sets up a daily 3 AM cron job to run it, logging output to `/var/log/cleanup.log`.
+
+---
+
+## **Problem-13: Conditional Command Execution**
+
+### **Playbook 1:**  
+Checks if a file exists using the `stat` module, then runs a command and shows output only if the file exists.
+
+### **Playbook 2:**  
+Uses a shell conditional to check file existence and run a command in one step, then displays the output.
+
+---
+
+## **Problem-14: Download and Extract Prometheus**
+**Playbook Description:**  
+An Ansible playbook that downloads the Prometheus tarball to a target host and extracts it to a specified directory.
+
+---
+
+## **Problem-15: Stop Service on High Disk Usage**
+**Playbook Description:**  
+An Ansible playbook that checks root disk usage and stops the Nginx service if usage exceeds 80%.
