@@ -1,1 +1,19 @@
+---
+- name: Collect /var/log/messages from all servers
+  hosts: all
+  become: yes
+  gather_facts: yes
 
+  tasks:
+    - name: Ensure local directory exists for this host
+      delegate_to: localhost
+      file:
+        path: "/tmp/logs/{{ inventory_hostname }}"
+        state: directory
+        mode: '0755'
+
+    - name: Fetch /var/log/messages from remote host
+      fetch:
+        src: /var/log/messages
+        dest: "/tmp/logs/{{ inventory_hostname }}/messages"
+        flat: yes
