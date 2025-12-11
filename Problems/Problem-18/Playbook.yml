@@ -1,1 +1,18 @@
+# Rolling deployment: It means updating your application or service one search at a time instead of updating all servers at once
 
+---
+- name: Simple rolling deployment
+  hosts: webservers
+  become: yes
+  serial: 1    # deploy to ONE server at a time
+
+  tasks:
+    - name: Update web app file
+      copy:
+        src: index.html
+        dest: /var/www/html/index.html
+
+    - name: Restart web service
+      service:
+        name: nginx
+        state: restarted
