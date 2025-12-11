@@ -1,1 +1,20 @@
+# lineinfile module ensures a specific line is present in file (adds if missing)
+---
+- name: Add entries to inventory file using Ansible lineinfile module
+  hosts: web
+  become: yes
+  tasks:
+  vars:
+    host_entries:
+      - { ip: "192.168.1.10", hostname: "webserver" }
+      - { ip: "192.168.1.11", hostname: "dbserver" }
+  tasks:
+    - name: Add entries in file
+      lineinfile:
+        path: /home/ubuntu/inventory.ini
+        line: "{{item.ip}} {{item.hostname}}"
+        state: present
+      loop: "{{host_entries}}"
+      delegate_to: localhost
 
+      
