@@ -1,0 +1,26 @@
+# Clone a git repository and run a script.
+---
+- name: Clone Git repository and run a script
+  hosts: web
+  become: yes
+  vars:
+    repo_url: "https://github.com/Code-with-Shravani25/Ansible-Practice.git"
+    dest_dir: "/opt/myapp"
+    script_name: "deploy.sh"
+  tasks:
+    - name: Ensure git is installed
+      apt:
+        name: git
+        state: present
+        update_cache: yes
+    - name: Clone Git repo
+      git:
+        repo: "{{repo_url}}"
+        dest: "{{dest_url}}"
+        version: main
+    - name: Make the script executable
+      file:
+        path: "{{dest_dir}}/{{script_name}}"
+        mode: '0755'
+    - name: Run deployment script
+      command: "{{dest_dir}}/{{script_name}}"
