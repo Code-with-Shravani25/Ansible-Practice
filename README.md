@@ -126,6 +126,17 @@ Creates a local folder per host and fetches each server’s `/var/log/messages` 
 **Playbook Description:**  
 Performs a rolling deployment by updating and restarting one server at a time using `serial: 1`.
 
+
+## **Problem-19: Clone a Git Repo and runa  script/Playbook**
+**Playbook1**  
+Clone a Git repo and run a script.
+
+**Solution2** 
+**Play**
+Clone a Git repo first and run this play
+**Play1** 
+Import playbook from this, so after runningplay.yml need to run this play1.yml as import_paybook is static it does not load the playbook at parse time.
+
 ---
 
 ## **Problem-22: Error Handling in Ansible**
