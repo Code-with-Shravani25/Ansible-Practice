@@ -1,0 +1,4 @@
+# After running play.yml then run play1.yml
+
+---
+- import_playbook: "/home/ubuntu/Git_Playbooks/Problems/Problem-11/Playbook.yml"
