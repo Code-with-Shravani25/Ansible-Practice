@@ -17,5 +17,5 @@
 
     - name: Show command output
       debug:
-        var: cmd_output.stdout
+        var: cmd_output.stdout  # msg: "{{cmd_output.stdout}}"
       when: file_check.stat.exists
