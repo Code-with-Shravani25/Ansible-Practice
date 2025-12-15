@@ -60,7 +60,7 @@ Updates the ownership and permissions of a file on all managed nodes.
 
 ## **Problem-08: Reboot Servers**
 **Playbook Description:**  
-Reboots the target servers and waits until they come back online.
+Reboots target servers and waits until they come back online.
 
 ---
 
@@ -72,38 +72,68 @@ Installs multiple packages on all managed nodes using a loop.
 
 ## **Problem-10: Conditional Package Installation**
 **Playbook Description:**  
-Installs Nginx on Debian-based systems or Apache HTTPD on RedHat-based systems using conditional tasks, and starts/enables the service when required.
+Installs Nginx on Debian-based systems or Apache HTTPD on RedHat-based systems using conditionals, and enables the service.
 
 ---
 
 ## **Problem-11: Role-Based Nginx Deployment**
 **Playbook Description:**  
-Deploys an Nginx web server using an Ansible role that installs Nginx, configures the service, copies a webpage, and restarts Nginx when needed.
+Deploys an Nginx web server using a role that installs, configures, copies a webpage, and restarts Nginx.
 
 ---
 
 ## **Problem-12: Daily Cron Job**
 **Playbook Description:**  
-An Ansible playbook that ensures a script exists on target hosts and sets up a daily 3 AM cron job to run it, logging output to `/var/log/cleanup.log`.
+Ensures a script exists and sets up a daily 3 AM cron job to run it, logging output to `/var/log/cleanup.log`.
 
 ---
 
 ## **Problem-13: Conditional Command Execution**
 
 ### **Playbook 1:**  
-Checks if a file exists using the `stat` module, then runs a command and shows output only if the file exists.
+Uses the `stat` module to check if a file exists and runs a command only if it does.
 
 ### **Playbook 2:**  
-Uses a shell conditional to check file existence and run a command in one step, then displays the output.
+Uses a shell inline conditional (`if`) to check file existence and run a command.
 
 ---
 
 ## **Problem-14: Download and Extract Prometheus**
 **Playbook Description:**  
-An Ansible playbook that downloads the Prometheus tarball to a target host and extracts it to a specified directory.
+Downloads the Prometheus tarball and extracts it to a specified directory.
 
 ---
 
 ## **Problem-15: Stop Service on High Disk Usage**
 **Playbook Description:**  
-An Ansible playbook that checks root disk usage and stops the Nginx service if usage exceeds 80%.
+Checks root disk usage and stops the Nginx service if it exceeds 80%.
+
+---
+
+## **Problem-16: Add Host Entries Using lineinfile**
+**Playbook Description:**  
+Ensures each IP–hostname entry exists in a file using Ansible’s `lineinfile` module.
+
+---
+
+## **Problem-17: Fetch Logs from All Servers**
+**Playbook Description:**  
+Creates a local folder per host and fetches each server’s `/var/log/messages` file into it.
+
+---
+
+## **Problem-18: Rolling Deployment**
+**Playbook Description:**  
+Performs a rolling deployment by updating and restarting one server at a time using `serial: 1`.
+
+---
+
+## **Problem-22: Error Handling in Ansible**
+**Playbook Description:**  
+Demonstrates error handling with `ignore_errors`, `failed_when`, and `block`, `rescue`, `always` blocks.
+
+---
+
+## **Problem-23: Tags in Ansible Playbook**
+**Playbook Description:**  
+Uses Ansible tags to run only specific tasks selectively.
