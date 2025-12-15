@@ -1,0 +1,32 @@
+- hosts: all
+  become: yes
+
+  tasks:
+
+    - name: Install nginx (ignore errors)
+      apt:
+        name: nginx
+        state: present
+      ignore_errors: yes
+
+    - name: Validate nginx is running using failed_when
+      shell: systemctl status nginx
+      register: nginx_check
+      failed_when: "'inactive' in nginx_check.stdout"
+
+    - block:
+        - name: A task that will fail
+          shell: /bin/false
+
+        - name: This will not run if above fails
+          shell: echo "Success inside block"
+      
+      rescue:
+        - name: This runs if block fails
+          debug:
+            msg: "Rescue block triggered due to failure."
+
+      always:
+        - name: This always runs
+          debug:
+            msg: "Always block executed."
