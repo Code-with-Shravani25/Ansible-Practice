@@ -1,1 +1,42 @@
+# Use block and rescue to handle deployment failures gracefully and send email alerts.
 
+---
+- name: Deploy an application with error handling
+  hosts: web
+  become: yes
+  vars_files:
+    - secrets.yml
+  tasks:
+    - name: Deployment block
+      block:
+        - name: Stop existing service
+          service:
+             name: myapp
+             state: stopped
+        - name: Deploy application code
+          copy:
+            src: /home/ubuntu/index.html
+            dest: /var/www/html/index.html
+        - name: Start service
+          service:
+            name: myapp
+            state: started
+      rescue:
+        - name: Notify admin on deployment failure.
+          mail:
+            host: "{{smtp_host}}"
+            port: "{{smtp_port}}"
+            username: "{{smtp_user}}"
+            password: "{{smtp_password}}"
+            to: "{{alert_email}}"
+            subject: "Deployment failes on {{inventory_hostname}}"
+            body: "Deployment of nginx failed on {{inventory_hostname}}.Please check."
+
+
+
+# secrets.yml
+# smtp_host: smtp.gmail.com
+# smtp_port: 465
+# smtp_user: shravanibudharam12345@gmail.com
+# smtp_password: olxq fllj bmmt uuux
+# alert_email: shravanibudharam25@gmail.com
