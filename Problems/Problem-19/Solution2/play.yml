@@ -1,0 +1,20 @@
+# First clone the git
+
+---
+- name: Clone Git repository and run a script
+  hosts: localhost
+  become: yes
+  vars:
+    repo_url: "https://github.com/Code-with-Shravani25/Ansible-Practice.git"
+    dest_dir: "/home/ubuntu/Git_Playbooks"
+  tasks:
+    - name: Ensure git is installed
+      apt:
+        name: git
+        state: present
+        update_cache: yes
+    - name: Clone Git repo
+      git:
+        repo: "{{repo_url}}"
+        dest: "{{dest_dir}}"
+        version: main
