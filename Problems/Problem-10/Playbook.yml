@@ -1,6 +1,6 @@
-# Conditionallt install a package based on OS
+# Conditionally install a package based on OS
 ---
-- name: Conditionallt install a package based on OS
+- name: Conditionally install a package based on OS
   hosts: all
   become: true
   tasks:
