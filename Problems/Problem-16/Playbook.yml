@@ -1,7 +1,7 @@
 # lineinfile module ensures a specific line is present in file (adds if missing)
 ---
 - name: Add entries to inventory file using Ansible lineinfile module
-  hosts: web
+  hosts: localhost
   become: yes
   tasks:
   vars:
