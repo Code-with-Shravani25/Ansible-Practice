@@ -1,4 +1,4 @@
-# Rolling deployment: It means updating your application or service one search at a time instead of updating all servers at once
+# Rolling deployment: It means updating your application or service one server at a time instead of updating all servers at once
 
 ---
 - name: Simple rolling deployment
