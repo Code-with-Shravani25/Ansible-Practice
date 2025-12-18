@@ -139,6 +139,18 @@ Import playbook from this, so after runningplay.yml need to run this play1.yml a
 
 ---
 
+## **Problem-20: Send Email Alerts**
+**Playbook Description:**  
+Use block and rescue to handle deployment failures gracefully and send email alerts.
+
+---
+
+## **Problem-21: Send Email Alert**
+**Playbook Description:**  
+Check service status and send notification if stopped.
+
+---
+
 ## **Problem-22: Error Handling in Ansible**
 **Playbook Description:**  
 Demonstrates error handling with `ignore_errors`, `failed_when`, and `block`, `rescue`, `always` blocks.
