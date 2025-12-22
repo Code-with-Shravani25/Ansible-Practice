@@ -1,0 +1,8 @@
+- name: Deploy environment specific config
+  hosts: web
+  become: yes
+  tasks:
+    - name: Generate app configuration
+      template:
+        src: app.conf.j2
+        dest: /etc/myapp/app.conf
