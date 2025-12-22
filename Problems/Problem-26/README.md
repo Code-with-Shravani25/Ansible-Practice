@@ -21,4 +21,5 @@ mysql -u root -p
 mysql -u username -p
 ---
 SHOW DATABASE;
+---
 CREATE DATABASE test;
