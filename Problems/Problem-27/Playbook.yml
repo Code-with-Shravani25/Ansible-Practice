@@ -1,0 +1,44 @@
+---
+- name: Install and Configure Tomcat
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install Java
+      apt:
+        name: default-jdk
+        state: present
+    - name: Install Tomcat
+      get_url:
+        url: "https://dlcdn.apache.org/tomcat/tomcat-11/v11.0.15/bin/apache-tomcat-11.0.15.tar.gz"  # From core binary distributions
+        dest: /opt/apache-tomcat-11.0.15.tar.gz
+    - name: Create Directory
+      file:
+        path: /opt/tomcat
+        state: directory
+    - name: Extract
+      unarchive:
+        src: /opt/apache-tomcat-11.0.15.tar.gz
+        dest: /opt/tomcat
+        remote_src: yes
+        extra_opts: [--strip-components=1] 
+    - name: Start Tomcat
+      shell: nohup /opt/tomcat/bin/startup.sh &
+
+
+
+ # without extra_opts ansible will preserve that structure:
+ # /opt/tomcat/apache-tomcat-11.0.14/
+ #                                  |- bin/
+ #                                  |- conf/
+ #                                  |-lib/
+ #                                  |- webapps/
+ # with extra_opts it will remove first folder level (apache-tomcat-11.0.14/) from every file path inside the tarball
+ # It will be
+ # /opt/tomcat/bin
+ # /opt/tomcat/conf
+
+
+ # shell: nohup /opt/tomcat/bin/startup.sh &
+ # nohup: "no hang up" the process (i.e. tomcat) keeps running even after shell or playbook exists.
+ # & - runs it in the background, so Ansible doesnt hang waiting for Tomcat.
+ # nohup ... & : ensures Tomcat keeps running in the background after Ansible finishes.
