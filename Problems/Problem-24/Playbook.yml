@@ -1,1 +1,7 @@
-
+# Deploy a web page using Jinja template.
+---
+- name: Jinja Template
+  hosts: all
+  become: yes
+  roles:
+    - myweb
