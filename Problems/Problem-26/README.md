@@ -15,7 +15,9 @@ check_implicit_admin: true
 When this is true, Ansible automatically tries to connect using root UNIX socket as an implicit admin, even if no password is configured yet.
 ---
 To login
+---
 mysql -u root -p
+---
 mysql -u username -p
 ---
 SHOW DATABASE;
