@@ -175,3 +175,7 @@ This project demonstrates how to dynamically generate environment-specific confi
 The same configuration template is reused across dev, test, and prod environments, with values customized at runtime based on inventory and variable files.
 
 ---
+
+## **Problem-26: Install and configure MySQL DB**
+**Playbook Description:**  
+Install and configure MySQL DB
