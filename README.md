@@ -160,3 +160,9 @@ Demonstrates error handling with `ignore_errors`, `failed_when`, and `block`, `r
 ## **Problem-23: Tags in Ansible Playbook**
 **Playbook Description:**  
 Uses Ansible tags to run only specific tasks selectively.
+
+---
+
+## **Problem-24: Jinja Template**
+**Playbook Description:**  
+Deploy a webpage using a jinja2 template and deploy via template module.
