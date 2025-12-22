@@ -1,0 +1,16 @@
+---
+# tasks file for myweb
+- name: Install Nginx
+  apt:
+    name: nginx
+    state: present
+- name: Start and enable the service
+  service:
+    name: nginx
+    state: started
+    enabled: yes
+- name: Copy template
+  template:
+    src: index.html.j2
+    dest: /var/www/html/index.html
+  notify: Restart Nginx
