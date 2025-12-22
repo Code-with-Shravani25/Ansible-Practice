@@ -166,3 +166,12 @@ Uses Ansible tags to run only specific tasks selectively.
 ## **Problem-24: Jinja Template**
 **Playbook Description:**  
 Deploy a webpage using a jinja2 template and deploy via template module.
+
+---
+
+## **Problem-25: Environment based configuration using Ansible and Jinja Template**
+**Playbook Description:**  
+This project demonstrates how to dynamically generate environment-specific configuration files using Ansible variables and Jinja2 templates.
+The same configuration template is reused across dev, test, and prod environments, with values customized at runtime based on inventory and variable files.
+
+---
