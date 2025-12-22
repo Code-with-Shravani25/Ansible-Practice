@@ -1,0 +1,48 @@
+# Install and configure MySQL DB
+---
+- name: Install and MySQL DB
+  hosts: all
+  become: yes
+  vars:
+    db_name: myappdb
+    db_user: appuser
+    db_password: Secure123!
+    mysql_root_password: StrongRootPass123
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+    - name: Install MySQL server and dependencies
+      apt:
+        name:
+          - mysql-server
+          - python3-pymysql
+        state: present
+    - name: Ensure MySQL service is running
+      service:
+        name: mysql
+        state: started
+        enabled: yes
+    - name: Set MySQL root P=password
+      community.mysql.mysql_user:
+        name: root
+        host: localhost
+        password: "{{mysql_root_password}}"
+        login_unix_socket: /var/run/mysqld/mysqld.sock
+        check_implicit_admin: true
+        state: present
+    - name: Create application DB
+      community.mysql.mysql_db:
+        name: "{{db_name}}"
+        state: present
+        login_user: root
+        login_password: "{{mysql_root_password}}"
+    - name: Create application DB user
+      community.mysql.mysql_user:
+        name: "{{db_user}}"
+        password: "{{db_password}}"
+        host: "%"
+        priv: "{{db_name}}.*:ALL"
+        state: present
+        login_user: root
+        login_password: "{{mysql_root_password}}"
