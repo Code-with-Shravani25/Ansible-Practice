@@ -20,7 +20,7 @@ mysql -u root -p
 ---
 mysql -u username -p
 ---
-SHOW DATABASE;
+SHOW DATABASES;
 ---
 CREATE DATABASE test;
 ---
