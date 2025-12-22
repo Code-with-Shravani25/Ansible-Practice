@@ -23,3 +23,4 @@ mysql -u username -p
 SHOW DATABASE;
 ---
 CREATE DATABASE test;
+---
