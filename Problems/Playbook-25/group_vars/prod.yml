@@ -1,4 +1,0 @@
-app_port: 80
-debug: false
-db_host: prod-db.local
-replicas: 5
