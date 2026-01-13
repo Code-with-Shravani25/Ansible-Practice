@@ -126,6 +126,7 @@ Creates a local folder per host and fetches each server’s `/var/log/messages` 
 **Playbook Description:**  
 Performs a rolling deployment by updating and restarting one server at a time using `serial: 1`.
 
+---
 
 ## **Problem-19: Clone a Git Repo and runa  script/Playbook**
 **Playbook1**  
@@ -179,3 +180,11 @@ The same configuration template is reused across dev, test, and prod environment
 ## **Problem-26: Install and configure MySQL DB**
 **Playbook Description:**  
 Install and configure MySQL DB
+
+---
+
+## **Problem-27: Install and configure Tomcat**
+**Playbook Description:**  
+Installs Java, sets up Apache Tomcat from a tar archive, and starts the Tomcat service on the target server.
+
+---
