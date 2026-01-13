@@ -14,7 +14,7 @@ Automatically gathers system facts (using `gather_facts: yes`) and displays IP, 
 
 ---
 
-## **Problem-03: Create a Single User**
+## **Problem-03: Create a User**
 
 ### **Playbook 1:**  
 Creates a user with a password generated using variables.
