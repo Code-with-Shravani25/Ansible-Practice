@@ -1,0 +1,4 @@
+app_port: 8080
+debug: true
+db_host: dev-db.local
+replicas: 1
