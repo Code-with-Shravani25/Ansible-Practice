@@ -179,7 +179,7 @@ The same configuration template is reused across dev, test, and prod environment
 
 ## **Problem-26: Install and configure MySQL DB**
 **Playbook Description:**  
-Install and configure MySQL DB
+Installs MySQL Server, configures root access, and creates an application database and user with appropriate privileges.
 
 ---
 
