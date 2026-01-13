@@ -1,0 +1,3 @@
+app_name: payment-service
+log_dir: /var/log/{{ app_name }}
+timeout: 30
