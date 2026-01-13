@@ -1,0 +1,19 @@
+# Application Configuration
+app.name={{ app_name | upper }}
+environment={{ env | lower }}
+
+server.port={{ app_port }}
+replicas={{ replicas }}
+
+{% if env == 'dev' %}
+logging.level=DEBUG
+{% else %}
+logging.level=INFO
+{% endif %}
+
+log.path={{ log_dir | default('/tmp/logs') }}
+
+database.host={{ db_host }}
+timeout={{ timeout | int }}s
+
+# Generated on {{ ansible_date_time.date }}
