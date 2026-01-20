@@ -1,6 +1,6 @@
 # Install and configure MySQL DB
 ---
-- name: Install and MySQL DB
+- name: Install and Configure MySQL DB
   hosts: all
   become: yes
   vars:
