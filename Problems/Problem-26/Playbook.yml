@@ -23,10 +23,10 @@
         name: mysql
         state: started
         enabled: yes
-    - name: Set MySQL root P=password
+    - name: Set MySQL root password
       community.mysql.mysql_user:
         name: root
-        host: localhost
+        host: localhost # MySQL root user is intended to log in only from the local machine, not remotely
         password: "{{mysql_root_password}}"
         login_unix_socket: /var/run/mysqld/mysqld.sock
         check_implicit_admin: true
@@ -41,7 +41,7 @@
       community.mysql.mysql_user:
         name: "{{db_user}}"
         password: "{{db_password}}"
-        host: "%"
+        host: "%"  #User can connect from any host
         priv: "{{db_name}}.*:ALL"
         state: present
         login_user: root
