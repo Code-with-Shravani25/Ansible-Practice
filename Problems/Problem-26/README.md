@@ -5,6 +5,8 @@ mysql: why not only mysql because it installs only client tools, command line to
 python3-pymysql: Python library needed by Ansible to communicate with MySQL.  Because Mysql modules execute Python code on managed host and those modules use Python MySQL libraries to talk to the database.
 ---
 community.mysql is an ansible collection (a package of modules, plugins and roles) maintained by Ansible community for managing MySQL and MariaDB.
+👉 community.mysql.mysql_user is the fully qualified name (FQCN) of the module.
+👉 mysql_user alone works only in older Ansible versions or when collections are implicitly loaded.
 ---
 login_unix_socket: /var/run/mysql/mysqld.sock
 When mysql is freshly installed the root account does not have a password yet that means linux system root user can log in without a password only via UNIX socket file (/var/run/mysql/mysqld.sock).
