@@ -1,8 +1,8 @@
 mysql-server: MySQL server package, it installs db server itself (db_daemon), configuration files, systemd unit and initial setup.
 ---
-mysql: why not only mysql installs only client tools, command line tools no dbserver.
+mysql: why not only mysql because it installs only client tools, command line tools no dbserver.
 ---
-python3-pymysql: Python library needed by Ansible to communicate with MySQL
+python3-pymysql: Python library needed by Ansible to communicate with MySQL.  Because Mysql modules execute Python code on managed host and those modules use Python MySQL libraries to talk to the database.
 ---
 community.mysql is an ansible collection (a package of modules, plugins and roles) maintained by Ansible community for managing MySQL and MariaDB.
 ---
