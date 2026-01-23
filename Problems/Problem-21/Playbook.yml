@@ -1,1 +1,44 @@
 # Check service status and send notification if stopped.
+- name: Check service status and send alert if stopped
+  hosts: all
+  become: yes
+
+  vars:
+    service_name: nginx
+    email_to: shravanibudharam25@gmail.com
+    email_from: shravanibudharam12345@gmail.com
+    smtp_host: smtp.gmail.com
+    smtp_port: 587
+
+  vars_files:
+    - secrets.yml
+
+  tasks:
+    - name: Check service status
+      service_facts:
+
+    - name: Send email if service is stopped
+      mail:
+        host: "{{ smtp_host }}"
+        port: "{{ smtp_port }}"
+        username: "{{smtp_username}}"
+        password: "{{smtp_password}}"
+        to: "{{ email_to }}"
+        from: "{{ email_from }}"
+        subject: "ALERT: {{ service_name }} service is DOWN on {{ inventory_hostname }}"
+        body: |
+          Service: {{ service_name }}
+          Host: {{ inventory_hostname }}
+          Status: STOPPED
+
+          Immediate action required.
+      when: >
+        ansible_facts.services[service_name + '.service'].state != 'running'
+# service_facts : Gathers information about all system services
+# Stores them in : ansible_facts.services
+# stored value becomes : ansible_facts.services["nginx.service"].state
+# Possible states: stopped, running, failed
+
+  # secrets.yml
+  # smtp_username: shravanibudharam12345@gmail.com
+  # smtp_password: 16 digit password
